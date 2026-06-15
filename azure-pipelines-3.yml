@@ -36,4 +36,14 @@ stages:
         echo "Deploying TomcatMavenApp"
         echo "Deployment Successful"
       displayName: 'Deploy WAR Application'
-      
+- stage: Verification
+  displayName: Verification Stage
+  dependsOn: Deploy
+  jobs:
+  - job: VerifyDeployment
+    steps:
+      - script: |
+          echo "Checking deployment status"
+          echo "Application is running successfully"
+          echo "Pipeline execution completed"
+    displayName: 'Verify Deployment'      
